@@ -1,0 +1,17 @@
+
+.background-color {
+  background-color: lightgray;
+}
+.text-headers{
+  padding: 230px;
+  border: dotted;
+  margin-top: 5%;
+}
+.guess{
+  list-style: none;
+  display:inline-block;
+  margin-right: 15px;
+}
+#my-word{
+padding: 0;
+}
