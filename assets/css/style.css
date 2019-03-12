@@ -1,6 +1,7 @@
 
 .background-color {
-  background-color: lightgray;
+  /* background-color: lightgray; */
+  background-image: url("../images/cute_cars_blue.gif");
 }
 .text-headers{
   padding: 230px;
