@@ -11,7 +11,8 @@ window.onload = function () {
   var guess = "";
   var guesses;
   var correct;
-  var guessedword = "evgenia";
+  var guessedword = ["lexus","toyota","honda", "mercedes"];
+  var current = 0;
   var correctGuesses;
   var numberofwins = 0;
   // For each guessed letter:
@@ -19,35 +20,18 @@ window.onload = function () {
   //     add letter to correctGuesses
 
   var numberofguesses;
-  console.log("message this is running");
-  // showResult = function () {
-  //   currentword = document.getElementById('word');
-  //   correct = document.createElement('ul');
-
-  // for (var i = 0; i < guessedword.length; i++) {
-  //   correct.setAttribute('id', 'my-word');
-  //   guess = document.createElement('li');
-  //   guess.setAttribute('class', 'guess');
-  //   guess.innerHTML = "_";
-  //   console.log("to see");
-
-
-  //     currentword.appendChild(correct);
-  //     correct.appendChild(guess);
-  //   }
-  // }
 
   showResult = function () {
     var results = "";
-
-    for (var i = 0; i < guessedword.length; i++) {
+    var secretWord = guessedword[current];
+    for (var i = 0; i < secretWord.length; i++) {
       // For each i:
       //  if guessedword[i] is in correctGuesses
       //    append guessedword[i]
       //  else 
       //    append underscore
-      if (correctGuesses.has(guessedword[i])) {
-        results += guessedword[i] + " ";
+      if (correctGuesses.has(secretWord[i])) {
+        results += secretWord[i] + " ";
       }
       else {
         results += "_ ";
@@ -59,13 +43,13 @@ window.onload = function () {
 
   // the main loop, whenyo upress the button the calculation happens
   function doguess(e) {
-    console.log(e.key);
-    if (!guesses.has(e.key) && guessedword.indexOf(e.key) === -1) {
+    var secretWord = guessedword[current];
+    if (!guesses.has(e.key) && secretWord.indexOf(e.key) === -1) {
       numberofguesses--;
     }
     guesses.add(e.key);
 
-    if (guessedword.indexOf(e.key) !== -1) {
+    if (secretWord.indexOf(e.key) !== -1) {
       correctGuesses.add(e.key);
     }
     winorlose();
@@ -87,18 +71,23 @@ window.onload = function () {
 
   function winorlose() {
     var iswin = true;
+    var secretWord = guessedword[current];
     if (numberofguesses === 0) {
       reset();
-      console.log("you lose");
+      //setting modulo to handle the last word
+      current = (current+1) % guessedword.length;
+      console.log(current);
     }
-    for (var i = 0; i < guessedword.length; i++) {
-      if (!correctGuesses.has(guessedword[i])) {
+    for (var i = 0; i < secretWord.length; i++) {
+      if (!correctGuesses.has(secretWord[i])) {
         iswin = false;
       }
 
     }
     if(iswin){
       numberofwins++; 
+      current = (current+1) % guessedword.length;
+      console.log(current);
       reset();
     }
   }

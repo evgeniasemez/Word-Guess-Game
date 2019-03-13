@@ -1,12 +1,15 @@
 
 .background-color {
-  /* background-color: lightgray; */
-  background-image: url("../images/cute_cars_blue.gif");
+  background-color: #A3D3DB;
+  /* background-image: url("../images/cute_cars_blue.gif"); */
 }
 .text-headers{
-  padding: 230px;
   border: dotted;
   margin-top: 5%;
+  margin-bottom: 5%;
+  height: 80vh;
+  text-align: center;
+  padding-top: 10%;
 }
 .guess{
   list-style: none;
