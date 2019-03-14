@@ -2,35 +2,28 @@
 window.onload = function () {
   window.addEventListener("keydown", doguess);
 
+  const validLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
   // declaring variables for the project
   var wins = document.getElementById("number-wins");
   var currentword = document.getElementById("word");
   var livesDisplay = document.getElementById("number-guesses");
   var letteralreadyexists = document.getElementById("guessed-letters");
 
-  var guess = "";
   var guesses;
-  var correct;
+  // must contain only lower case letters
   var guessedword = ["lexus", "toyota", "honda", "mercedes"];
   var current = 0;
   var correctGuesses;
   var numberofwins = 0;
-
-  // For each guessed letter:
-  //   if letter is in guessedWord
-  //     add letter to correctGuesses
-
   var numberofguesses;
+
   // creating a function to show results
   showResult = function () {
     var results = "";
     var secretWord = guessedword[current];
     for (var i = 0; i < secretWord.length; i++) {
-      // For each i:
-      //  if guessedword[i] is in correctGuesses
-      //    append guessedword[i]
-      //  else 
-      //    append underscore
+  
       if (correctGuesses.has(secretWord[i])) {
         results += secretWord[i] + " ";
       }
@@ -45,6 +38,9 @@ window.onload = function () {
   // the main loop, when you press the button the calculation happens
   function doguess(e) {
     var secretWord = guessedword[current];
+    if (validLetters.indexOf(e.key) === -1) {
+      return;
+    }
     if (!guesses.has(e.key) && secretWord.indexOf(e.key) === -1) {
       numberofguesses--;
     }
