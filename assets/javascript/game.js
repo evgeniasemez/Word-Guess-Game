@@ -2,7 +2,7 @@
 window.onload = function () {
   window.addEventListener("keydown", doguess);
 
-
+  // declaring variables for the project
   var wins = document.getElementById("number-wins");
   var currentword = document.getElementById("word");
   var livesDisplay = document.getElementById("number-guesses");
@@ -11,16 +11,17 @@ window.onload = function () {
   var guess = "";
   var guesses;
   var correct;
-  var guessedword = ["lexus","toyota","honda", "mercedes"];
+  var guessedword = ["lexus", "toyota", "honda", "mercedes"];
   var current = 0;
   var correctGuesses;
   var numberofwins = 0;
+
   // For each guessed letter:
   //   if letter is in guessedWord
   //     add letter to correctGuesses
 
   var numberofguesses;
-
+  // creating a function to show results
   showResult = function () {
     var results = "";
     var secretWord = guessedword[current];
@@ -41,7 +42,7 @@ window.onload = function () {
     currentword.innerHTML = results;
   }
 
-  // the main loop, whenyo upress the button the calculation happens
+  // the main loop, when you press the button the calculation happens
   function doguess(e) {
     var secretWord = guessedword[current];
     if (!guesses.has(e.key) && secretWord.indexOf(e.key) === -1) {
@@ -63,19 +64,19 @@ window.onload = function () {
     var guessesArray = Array.from(guesses.values());
     letteralreadyexists.innerHTML = guessesArray.join(", ");
   }
-
+  // creating a function to show lives
   function showLives() {
     livesDisplay.innerHTML = numberofguesses;
 
   }
-
+  // creating a function win or lose
   function winorlose() {
     var iswin = true;
     var secretWord = guessedword[current];
     if (numberofguesses === 0) {
       reset();
       //setting modulo to handle the last word
-      current = (current+1) % guessedword.length;
+      current = (current + 1) % guessedword.length;
       console.log(current);
     }
     for (var i = 0; i < secretWord.length; i++) {
@@ -84,20 +85,21 @@ window.onload = function () {
       }
 
     }
-    if(iswin){
-      numberofwins++; 
-      current = (current+1) % guessedword.length;
+    if (iswin) {
+      numberofwins++;
+      //setting modulo to handle the last word
+      current = (current + 1) % guessedword.length;
       console.log(current);
       reset();
     }
   }
-
+  // creating a function to show wins
   function showWins() {
     wins.innerHTML = numberofwins;
   }
-
+  // creating a reset function, so the game can keep going
   function reset() {
-    correctGuesses =new Set();
+    correctGuesses = new Set();
     guesses = new Set();
     showGuesses();
     numberofguesses = 15;

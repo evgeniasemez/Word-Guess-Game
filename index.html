@@ -5,46 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- linking CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- linking bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
+    <!-- linking JavaScript -->
     <script src="assets/javascript/game.js"></script>
     <title>Hangman Game</title>
 </head>
+<!-- setting visual perspective of the project -->
 
 <body class="background-color">
+    <!-- using bootstrap to style -->
     <div class="container">
         <div class="row">
             <div class="col-sm-6 text-headers">
-                <img src = "assets/images/cute_cars_blue.gif" width=100%/>
+                <!-- setting image of a super cute car -->
+                <img src="assets/images/cute_cars_blue.gif" width=100% />
             </div>
             <div class="col-sm-6 text-headers">
+                <!-- just a header note -->
                 <h5>Press any key to get started!</h5>
-
+                <!-- here i set nimber of wins -->
                 <h5>Wins</h5>
                 <div id="number-wins">
 
                 </div>
-
+                <!-- here i set a current word -->
                 <h5>Current word</h5>
 
-                <div id ="word">
+                <div id="word">
 
                 </div>
-
+                <!-- here are number of guesses remaining -->
                 <h5>Number of guesses remaining</h5>
 
-                <div id ="number-guesses">
+                <div id="number-guesses">
 
                 </div>
-
+                <!-- where we can see letters already guessed -->
                 <h5>Letters already guessed</h5>
 
                 <div id="guessed-letters">
-                    
+
                 </div>
-
-
 
             </div>
 
